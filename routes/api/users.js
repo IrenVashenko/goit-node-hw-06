@@ -23,5 +23,10 @@ router.get('/logout', authenticate, ctrlMiddleware(ctrl.logout));
 //avatars
 router.patch('/avatars', authenticate, download.single("avatar"), ctrlMiddleware(ctrl.newAvatar));
 
+//verify
+router.get('/verify/:verificationToken', ctrlMiddleware(ctrl.verify));
+router.post('/verify', validation(schema.verifyEmail), ctrlMiddleware(ctrl.resetEmail));
+
+
 module.exports = router;
 

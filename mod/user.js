@@ -40,13 +40,18 @@ const signupShema = Joi.object({
 
 const loginShema = Joi.object({
     email: Joi.string().pattern(emailRegexp).required(),
-    password:Joi.string().min(6).required() ,
+    password:Joi.string().min(6).required(),
     subscription:Joi.string().required()
+});
+
+const verifyEmail = Joi.object({
+    email: Joi.string().pattern(emailRegexp).required(),
 })
 
 const schema = {
     signupShema,
-    loginShema 
+    loginShema, 
+    verifyEmail 
 }
 
 const User = model("user", userShame);
